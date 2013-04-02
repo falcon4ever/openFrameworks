@@ -129,6 +129,7 @@ void ofNotifyEvent(EventType & event, const ArgumentsType & args){
 	event.notify(NULL,args);
 }
 
+#if !defined(TARGET_QNX)	// ofxQNX uses unpatched poco 1.4.6
 template <typename SenderType>
 void ofNotifyEvent(ofEvent<void> & event, SenderType * sender){
 	event.notify(sender);
@@ -137,4 +138,4 @@ void ofNotifyEvent(ofEvent<void> & event, SenderType * sender){
 inline void ofNotifyEvent(ofEvent<void> & event){
 	event.notify(NULL);
 }
-
+#endif
