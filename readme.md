@@ -14,11 +14,12 @@ openFrameworks uses [Semantic Versioning](http://semver.org/), although strict a
 
 Notes about this release:
 
-This is basically the 0.7.4 release and includes the following platforms
+This is basically the stable 0.7.4 release and includes the following platforms
+
 1. OSX
 2. Linux (32 and 64 bit)
 3. Windows
 4. iOS
 5. Android
 
-The source is patched for use with ofxQNX (BlackBerry PlayBook and BlackBerry 10)
+The source is patched for use with [ofxQNX](https://github.com/falcon4ever/ofxQNX) (BlackBerry PlayBook and BlackBerry 10)
