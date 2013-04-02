@@ -11,3 +11,14 @@ If you want to work with the openFrameworks GitHub repository, you should use th
 For per-platform readmes, see `readme.osx`, `readme.linux`, etc.
 
 openFrameworks uses [Semantic Versioning](http://semver.org/), although strict adherence will only come into effect at version 1.0.0.
+
+Notes about this release:
+
+This is basically the 0.7.4 release and includes the following platforms
+1. OSX
+2. Linux (32 and 64 bit)
+3. Windows
+4. iOS
+5. Android
+
+The source is patched for use with ofxQNX (BlackBerry PlayBook and BlackBerry 10)
