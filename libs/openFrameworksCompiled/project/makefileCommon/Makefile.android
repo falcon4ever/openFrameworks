@@ -265,7 +265,7 @@ afterReleaseAndroid: $(RESFILE)
 	
 $(RESFILE): $(DATA_FILES)
 	@echo compressing and copying resources from bin/data into res
-	#cd $(PROJECT_PATH); \
+	cd $(PROJECT_PATH); \
 	if [ -d "bin/data" ]; then \
 		mkdir -p res/raw; \
 		rm res/raw/$(RESNAME).zip; \
