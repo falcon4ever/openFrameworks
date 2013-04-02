@@ -20,7 +20,7 @@
 #endif
 
 
-#if defined(TARGET_OF_IPHONE) || defined(TARGET_OSX ) || defined(TARGET_LINUX)
+#if defined(TARGET_OF_IPHONE) || defined(TARGET_OSX ) || defined(TARGET_LINUX) || defined(TARGET_QNX)
 	#include <sys/time.h>
 #endif
 
@@ -217,6 +217,8 @@ static string & dataPathRoot(){
 	static string * dataPathRoot = new string("../../../data/");
 #elif defined TARGET_ANDROID
 	static string * dataPathRoot = new string("sdcard/");
+#elif defined TARGET_QNX
+	static string * dataPathRoot = new string("");
 #elif defined(TARGET_LINUX)
 	static string * dataPathRoot = new string(ofFilePath::join(ofFilePath::getCurrentExeDir(),  "data/"));
 #else
@@ -295,8 +297,18 @@ string ofToDataPath(string path, bool makeAbsolute){
 			path = dataPathRoot()+path;
 		}
 
+	#if defined(TARGET_QNX)
+		// Always use absolute path for QNX platform
+		char fullpath[1024];
+		char appPath[1024];
+
+		getcwd(appPath, 1024);
+		snprintf(fullpath, 1024, "%s/%s", appPath, path.c_str());
+		path = fullpath;
+	#endif
+
 		if(makeAbsolute && (path.length()==0 || path.substr(0,1) != "/")){
-			#if !defined( TARGET_OF_IPHONE) & !defined(TARGET_ANDROID)
+			#if !defined( TARGET_OF_IPHONE) & !defined(TARGET_ANDROID) & !defined(TARGET_QNX)
 
 			#ifndef TARGET_WIN32
 				char currDir[1024];
@@ -562,14 +574,22 @@ bool ofIsStringInString(string haystack, string needle){
 //--------------------------------------------------
 string ofToLower(const string & src){
 	string dst(src);
+#if defined TARGET_QNX
+	transform(src.begin(),src.end(),dst.begin(),tolower);
+#else
 	transform(src.begin(),src.end(),dst.begin(),::tolower);
+#endif
 	return dst;
 }
 
 //--------------------------------------------------
 string ofToUpper(const string & src){
 	string dst(src);
+#if defined TARGET_QNX
+	transform(src.begin(),src.end(),dst.begin(),toupper);
+#else
 	transform(src.begin(),src.end(),dst.begin(),::toupper);
+#endif
 	return dst;
 }
 
@@ -758,6 +778,8 @@ ofTargetPlatform ofGetTargetPlatform(){
 	#endif
 #elif defined(TARGET_ANDROID)
 	return OF_TARGET_ANDROID;
+#elif defined(TARGET_QNX)
+	return OF_TARGET_QNX;
 #elif defined(TARGET_OF_IPHONE)
 	return OF_TARGET_IPHONE;
 #endif

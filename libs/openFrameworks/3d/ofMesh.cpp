@@ -349,7 +349,7 @@ int ofPrimitive::getNumIndicesWire(){
 
 //--------------------------------------------------------------
 ofVec3f* ofMesh::getVerticesPointer(){
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &vertices[0];
 #else
 	return vertices.data();
@@ -358,7 +358,7 @@ ofVec3f* ofMesh::getVerticesPointer(){
 
 //--------------------------------------------------------------
 ofFloatColor* ofMesh::getColorsPointer(){
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &colors[0];
 #else
 	return colors.data();
@@ -367,7 +367,7 @@ ofFloatColor* ofMesh::getColorsPointer(){
 
 //--------------------------------------------------------------
 ofVec3f* ofMesh::getNormalsPointer(){
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 		return &normals[0];
 #else
 	return normals.data();
@@ -376,7 +376,7 @@ ofVec3f* ofMesh::getNormalsPointer(){
 
 //--------------------------------------------------------------
 ofVec2f* ofMesh::getTexCoordsPointer(){
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 		return &texCoords[0];
 #else
 	return texCoords.data();
@@ -385,7 +385,7 @@ ofVec2f* ofMesh::getTexCoordsPointer(){
 
 //--------------------------------------------------------------
 ofIndexType* ofMesh::getIndexPointer(){
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 		return &indices[0];
 #else
 	return indices.data();
@@ -395,7 +395,7 @@ ofIndexType* ofMesh::getIndexPointer(){
 
 //--------------------------------------------------------------
 const ofVec3f* ofMesh::getVerticesPointer() const{
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &vertices[0];
 #else
 	return vertices.data();
@@ -404,7 +404,7 @@ const ofVec3f* ofMesh::getVerticesPointer() const{
 
 //--------------------------------------------------------------
 const ofFloatColor* ofMesh::getColorsPointer() const{
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &colors[0];
 #else
 	return colors.data();
@@ -413,7 +413,7 @@ const ofFloatColor* ofMesh::getColorsPointer() const{
 
 //--------------------------------------------------------------
 const ofVec3f* ofMesh::getNormalsPointer() const{
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &normals[0];
 #else
 	return normals.data();
@@ -422,7 +422,7 @@ const ofVec3f* ofMesh::getNormalsPointer() const{
 
 //--------------------------------------------------------------
 const ofVec2f* ofMesh::getTexCoordsPointer() const{
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &texCoords[0];
 #else
 	return texCoords.data();
@@ -431,7 +431,7 @@ const ofVec2f* ofMesh::getTexCoordsPointer() const{
 
 //--------------------------------------------------------------
 const ofIndexType * ofMesh::getIndexPointer() const{
-#ifdef TARGET_OSX
+#if defined(TARGET_OSX) || defined(TARGET_QNX)
 	return &indices[0];
 #else
 	return indices.data();
